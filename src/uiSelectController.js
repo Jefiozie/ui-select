@@ -18,6 +18,7 @@ uis.controller('uiSelectCtrl',
   ctrl.refreshDelay = uiSelectConfig.refreshDelay;
   ctrl.paste = uiSelectConfig.paste;
   ctrl.resetSearchInput = uiSelectConfig.resetSearchInput;
+   ctrl.refreshing = false;
 
   ctrl.removeSelected = uiSelectConfig.removeSelected; //If selected item(s) should be removed from dropdown list
   ctrl.closeOnSelect = true; //Initialized inside uiSelect directive link function
@@ -292,6 +293,7 @@ uis.controller('uiSelectCtrl',
    */
   ctrl.refresh = function(refreshAttr) {
     if (refreshAttr !== undefined) {
+       ctrl.refreshing = true;
 
       // Debounce
       // See https://github.com/angular-ui/bootstrap/blob/0.10.0/src/typeahead/typeahead.js#L155
@@ -301,6 +303,7 @@ uis.controller('uiSelectCtrl',
       }
       _refreshDelayPromise = $timeout(function() {
         $scope.$eval(refreshAttr);
+         ctrl.refreshing = false;
       }, ctrl.refreshDelay);
     }
   };
