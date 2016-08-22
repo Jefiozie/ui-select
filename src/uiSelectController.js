@@ -18,7 +18,7 @@ uis.controller('uiSelectCtrl',
   ctrl.refreshDelay = uiSelectConfig.refreshDelay;
   ctrl.paste = uiSelectConfig.paste;
   ctrl.resetSearchInput = uiSelectConfig.resetSearchInput;
-   ctrl.refreshing = false;
+  ctrl.refreshing = false;
 
   ctrl.removeSelected = uiSelectConfig.removeSelected; //If selected item(s) should be removed from dropdown list
   ctrl.closeOnSelect = true; //Initialized inside uiSelect directive link function
